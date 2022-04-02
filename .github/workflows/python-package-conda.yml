@@ -1,0 +1,29 @@
+name: Python Package using Conda
+
+on: [push]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 5
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7.7
+    - name: Lint with flake8
+      run: |
+        pip3 install flake8==3.9.0 wemake-python-styleguide==0.14.1 bandit==1.7.2     
+        flake8 .
+    - name: Start service
+      run: |
+        docker-compose -f docker-compose.yml up -d
+    - name: Run tests on service
+      run: |
+        docker-compose exec -T web python -m pytest --verbose
+    - name: Stop service
+      run: |
+        docker-compose down
