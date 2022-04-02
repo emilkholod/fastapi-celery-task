@@ -6,7 +6,7 @@ repos:
         language: python
         files: \.py$
         entry: flake8
-        additional_dependencies: [wemake-python-styleguide==0.14.1]
+        additional_dependencies: [wemake-python-styleguide==0.14.1, bandit==1.7.2]
 
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.4.0  # Use the ref you want to point at

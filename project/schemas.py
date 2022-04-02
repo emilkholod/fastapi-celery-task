@@ -13,7 +13,7 @@ class TasksSchema(BaseModel):
 
 
 class CreateTaskSchema(BaseModel):
-    task_id: List[UUID]
+    task_id: UUID
 
 
 class GetTaskStatusSchema(BaseModel):

@@ -1,6 +1,3 @@
-import json
-
-
 def test_route_tasks(test_app):
     response = test_app.get("/tasks")
     assert response.status_code == 200
@@ -12,7 +9,7 @@ def test_route_get_task(test_app):
 
 
 def test_route_create_task(test_app):
-    response = test_app.post("/tasks/create", data=json.dumps({"args": [1, 2, 3]}))
+    response = test_app.post("/tasks/create", json={"args": [1, 2, 3]})
     assert response.status_code == 201
     content = response.json()
     task_id = content["task_id"]
