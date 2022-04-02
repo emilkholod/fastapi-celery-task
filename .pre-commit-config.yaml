@@ -1,0 +1,27 @@
+repos:
+-   repo: https://github.com/PyCQA/flake8
+    rev: 3.9.0
+    hooks:
+    -   id: flake8
+        language: python
+        files: \.py$
+        entry: flake8
+        additional_dependencies: [wemake-python-styleguide==0.14.1]
+
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0  # Use the ref you want to point at
+    hooks:
+    -   id: check-ast
+    -   id: check-merge-conflict
+    -   id: detect-private-key
+    -   id: check-xml
+    -   id: end-of-file-fixer
+    
+-   repo: https://github.com/PyCQA/isort
+    rev: '5.8.0'  # Use the revision sha / tag you want to point at
+    hooks:
+    -   id: isort
+        entry: isort
+        files: \.py$
+        verbose: true
+        exclude: __init__.py
