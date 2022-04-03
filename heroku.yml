@@ -1,0 +1,13 @@
+setup:
+  addons:
+    - plan: heroku-redis
+build:
+  docker:
+    web: ./Dockerfile
+    worker: ./Dockerfile
+run:
+  web: uvicorn main:app --host 0.0.0.0 --port $PORT
+  worker:
+    command:
+      - celery --app worker.celery_app worker --loglevel=info
+    image: worker

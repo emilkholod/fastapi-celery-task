@@ -10,3 +10,5 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY . .
+
+ENV REDIS_URL=redis://redis:6379/0

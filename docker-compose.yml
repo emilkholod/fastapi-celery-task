@@ -26,7 +26,7 @@ services:
     depends_on:
       - web
       - redis
-    
+
 
   redis:
     image: redis:6-alpine
